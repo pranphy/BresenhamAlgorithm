@@ -1,12 +1,13 @@
 #include<iostream>
 #include<cstdio>
 using namespace std;
-
 struct Ellipse {int h,k,a,b;};
 
 istream& operator>>(istream&,Ellipse&);
 
+void Locate(int,int);
 void ShowPoint(Ellipse,int,int);
+
 void BreshenhamEllipse(Ellipse);
 void PartEllipse(Ellipse,int=0);
 
@@ -44,9 +45,22 @@ void PartEllipse(Ellipse E,int SwapIndex)
 }
 void ShowPoint(Ellipse E,int x,int y)
 {
-	cout<<"("<<E.h+x<<","<<E.k+y<<")";
+    int DisplayMethod=0;
+    if(DisplayMethod)
+        cout<<"("<<E.h+x<<","<<E.k+y<<")";
+    else
+    {
+        Locate(E.h+x,E.k+y);cout<<"*";
+        Locate(E.h-x,E.k+y);cout<<"*";
+        Locate(E.h+x,E.k-y);cout<<"*";
+        Locate(E.h-x,E.k-y);cout<<"*";
+    }
 }
 
+void Locate(int x,int y) // found this function somewhere in http://stackoverflow.com
+ {
+    printf("%c[%d;%df",0x1B,y,x);
+ }
 
 istream& operator>>(istream&ip,Ellipse&E)
 {
