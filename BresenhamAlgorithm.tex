@@ -11,7 +11,7 @@
 \hypersetup{colorlinks=true}
 \hypersetup{pdfborder={0 0 0}}
 \author{Prakash Gautam}
-\title{\Huge \vfill A\\Close Look at\\ Breshenham Algorithm\\  \small (Line Circle and Ellipse)}
+\title{\Huge \vfill A\\Close Look at\\ Bresenham Algorithm\\  \small (Line Circle and Ellipse)}
 
 \date{\vfill \textbf{First Published} Jan 19, 2014 \\ \textbf{Last Compiled}  \today}
 \input{./Files/ListingColour.tex}
@@ -34,12 +34,12 @@
 
 I really don't know what should a good preface look like, but since before reading any book one should at least go through its preface which in turn will decide whether the reader will go any further, I shall try to encourage to at least go through all the pages of this book(?).\\
 
-This book is my attempt to try to explain what I pretend to understand. At first I thought Breshenham algorithm was just some kind of rounding off algorithm to approximate the floating point output of equation to integers to plot into the always-integer-valued pixels. But this algorithm turns out to be way more than that. It is very very simple and yet very powerful that cuts short the complex calculations needed otherwise to find the points of certain geometric shapes.\\
+This book is my attempt to try to explain what I pretend to understand. At first I thought Bresenham algorithm was just some kind of rounding off algorithm to approximate the floating point output of equation to integers to plot into the always-integer-valued pixels. But this algorithm turns out to be way more than that. It is very very simple and yet very powerful that cuts short the complex calculations needed otherwise to find the points of certain geometric shapes.\\
 
-I don't assume that the reader has knowledge of Breshenham algorithm prior to this yet prior knowledge does no harm but help. Optional knowledge of C++ programming is good if the reader wants to use the C++ program codes given.
+I don't assume that the reader has knowledge of Bresenham algorithm prior to this yet prior knowledge does no harm but help. Optional knowledge of C++ programming is good if the reader wants to use the C++ program codes given.
 \\ This book is completely my original writing. Except for the Q/A I did on the class with my teacher, I've not referred any books or internet or anything. But the success of programs written and tested times and again in C++ suggest that the discussion given on the book are correct. As far as possible I've tried to explain the matter in plain language with common words. No figures  used in this book are taken from any existing source.\\
 
-I would like to thank my friends form encouraging me to write this and their appreciation has always pushed me further. Also I shall thank my friends in the class for coping me and my rigorous questions. I would sincerely thank my teacher who suggested me to use {\LaTeX} and answered my questions in the class without any irritation. I shall thank him for his lecture in the class which introduced me to Breshenham algorithm,\\
+I would like to thank my friends form encouraging me to write this and their appreciation has always pushed me further. Also I shall thank my friends in the class for coping me and my rigorous questions. I would sincerely thank my teacher who suggested me to use {\LaTeX} and answered my questions in the class without any irritation. I shall thank him for his lecture in the class which introduced me to Bresenham algorithm,\\
 
 Comments and suggestions are always welcome and are sincerely expected and accepted.
 \\
@@ -70,7 +70,7 @@ In the first case with three LED's, if you leave the circle to my mom- who doesn
 
 Since we are going to deal with determining various geometrical shapes in this document we want to be clear how do we represent pixel throughout the book. Though there could be alternative ways of doing so, we would stick to the above method in the book.
 
-\chapter{Breshenham Algorithm : Line}
+\chapter{Bresenham Algorithm : Line}
 \pagenumbering{arabic}
 \section{Background}
 It took me quite a while to appreciate the beauty of Brehsenham Line Drawing algorithm. Initially I thought It was just rounding off the decimal point to the nearest integer only in a zig-zag Barcelona way but to my fascination it turned out to be tremendously interesting yet very very finely simple.
@@ -190,7 +190,7 @@ Putting $k=0$ in equation \ref{eq:recursivep} we get:
 
 Which determines $(x_2,y_2)$ and so on.. and hence all the points of the line.
 
-\section{The Breshenham Algorithm}
+\section{The Bresenham Algorithm}
 Writing out algorithm for this:
 %\begin{enumerate}
 %	\item \quad Get the end points$(x_0,y_0)$ and$(x_1,y_1)$ calculate$\Delta x$ and$\Delta y$ and hence $P=P_0$ 
@@ -220,7 +220,7 @@ Writing out algorithm for this:
 		$P \gets P+2\Delta y -2\Delta x(y-t) $\;
 		$x\gets x+1$\;
 	}
-	\caption{Breshenham Line Algorithm for $0 \leq m  \leq 1$}
+	\caption{Bresenham Line Algorithm for $0 \leq m  \leq 1$}
 \end{algorithm}
 
 
@@ -268,7 +268,7 @@ Below is a computer program written in C++ implementing the algorithm.
 	\lstinputlisting[language=C++]{./Files/SourceCode/Line.cpp}
 \end{scriptsize}
 
-\chapter{Breshenham Algorithm : Circle}
+\chapter{Bresenham Algorithm : Circle}
 \section{Definition}
 
  A \emph{circle} is locus of a moving point which moves such that it's distance from a fixed point-called center- is always constant- called the radius. This is the basic definition of circle which completely describes a circle. 
@@ -344,7 +344,7 @@ Subtracting equation \ref{eq:decisioncircle} from equation \ref{eq:decisioncircl
  \end{equation}
  This is a tidy initial decision parameter.\\
 
- \section{The Breshenham Algorithm}
+ \section{The Bresenham Algorithm}
 Writing out algorithm for this:
 
 %\begin{enumerate}
@@ -384,9 +384,9 @@ Compare it with the breshenham algorithm for the straight line and get amazed. T
   For a circle, there is radial symmetry. This symmetry allows us determine the circle completely just by knowing the points of just the first octant. We would implement this process until $x_k\leq y_k$ which indicates the point lies on the second octant. For a point $(x,y)$, its transformation to the rest of the octant also are the closest points of the circle. So, for $(x,y)$ lying on second octant $(y,x)$ lies on  first octant. And also for the rest of octant find the transformed point and plot it.
 
 \section{Implementation in C++}
-Breshenham Circle Drawing Algorithm adopted in a program  in C++.
+Bresenham Circle Drawing Algorithm adopted in a program  in C++.
 \lstinputlisting[language=C++]{./Files/SourceCode/Circle.cpp}
-\chapter{The Breshenham Algorithm : Ellipse}
+\chapter{The Bresenham Algorithm : Ellipse}
 \section{Defintion}
 An ellipse is the locus of a point which moves such that the ratio of its distance from a fixed point( called the focus) and a straight line (called the directrix) is always constant, the constant is called the eccentricity of the ellipse and is less than one. If the eccentricity is greater than one the locus would be a hyperbola. Ellipse is a closed curved.\\
 Another equivalent definition which also gives us ellipse is that, ellipse is the locus of moving point whose sum of distances from two points called the foci is always constant. Both these definition are just two different demonstration of the same geometrical shape and are interchangeable. 
@@ -414,7 +414,7 @@ There is another equation as well called the polar equation of the ellipse.
  \section{Two Parts on Quardrant}
  
 
- Unlike a circle, the ellipse doesn't posses one symmetry of reflection on the line $y=x$. So as in circle we cant just calculate point on a single octant and reflect on other octants to plot. We certainly would exploit the symmetry along the axes but we have first to determine all point on one of the quardrants so they can be transformed to other quardants. But for our misery the slope of tangent to ellipse on the first quardrant takes all values from zero to infinity. But so far we have used Breshenham algorithm with one commong thing(in line and circle) in mind, the solpe had the property.$0 \leq \vert m \vert \leq 1$ or $-1\leq m \leq 0$. \\
+ Unlike a circle, the ellipse doesn't posses one symmetry of reflection on the line $y=x$. So as in circle we cant just calculate point on a single octant and reflect on other octants to plot. We certainly would exploit the symmetry along the axes but we have first to determine all point on one of the quardrants so they can be transformed to other quardants. But for our misery the slope of tangent to ellipse on the first quardrant takes all values from zero to infinity. But so far we have used Bresenham algorithm with one commong thing(in line and circle) in mind, the solpe had the property.$0 \leq \vert m \vert \leq 1$ or $-1\leq m \leq 0$. \\
  The ellipse doesn't posses symmetry in the octant and doesn't have the required property, so we are in deep deep trouble. What do we do now??\\
  Don't panic just yet. Lets go for yet another  trickery again.\\
 
@@ -486,7 +486,7 @@ Subtracting equation \ref{eq:decisionellipse} from equation \ref{eq:decisionelli
  \end{equation}
  This is a again neat and tidy initial decision parameter.\\
 
- \section{The Breshenham Algorithm}
+ \section{The Bresenham Algorithm}
 Writing out algorithm for this:
 %\begin{enumerate}
 %	\item \quad Get the semi major axis  $a$  and semi minor axis $b$ and center $(h,k)$calculate $P_0=b^2-a^2b+\frac{a^2}{4}$ 
